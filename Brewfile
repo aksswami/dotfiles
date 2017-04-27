@@ -25,7 +25,7 @@ brew 'carthage'
 brew 'git-extras'
 
 cask 'iterm2'
-cask 'ringcentral'
+# cask 'ringcentral'
 cask 'fastlane'
 cask 'atom'
 cask 'firefox'
