@@ -45,6 +45,56 @@ perms straight from 1Password — no manual key copying.
 
 ---
 
+## Verifying on a new machine
+
+After `chezmoi init --apply`, confirm it pulled and applied everything.
+
+### 1. Did it pull and apply at all?
+
+```sh
+chezmoi source-path        # → ~/.local/share/chezmoi
+chezmoi git -- remote -v   # → git@github.com:aksswami/dotfiles.git
+chezmoi diff               # EMPTY = source and home are in sync ✓
+chezmoi status             # EMPTY = nothing pending ✓
+chezmoi managed | wc -l    # count of managed paths
+```
+
+**Empty `chezmoi diff` + empty `chezmoi status` is the headline "it applied"
+signal.** If either prints anything, run `chezmoi apply -v` to finish.
+
+### 2. Did the 1Password secrets resolve? (the important part)
+
+```sh
+# SSH private keys present, 0600, non-empty
+ls -l ~/.ssh/id_ed25519 ~/.ssh/id_ed25519_afklm
+ssh-keygen -y -f ~/.ssh/id_ed25519 >/dev/null && echo "key valid ✓"
+
+# Claude Portkey key got injected, and the file is not world-readable
+grep -o 'x-portkey-api-key: .\{6\}' ~/.claude/settings.json
+ls -l ~/.claude/settings.json        # -rw------- (0600)
+
+# End-to-end: GitHub over SSH
+ssh -T git@github.com                 # "Hi aksswami! ..."
+```
+
+If any secret file is **empty** or you see an **`op signin` / authorization
+error**, 1Password wasn't unlocked when chezmoi applied. Unlock the 1Password
+app, then re-run `chezmoi apply`.
+
+### 3. Spot-check real files landed
+
+```sh
+git config --global user.email                 # your identity
+functions gwip                                 # a tracked fish git function exists
+ls ~/.local/bin/macos-defaults.sh              # opt-in script present
+head -3 "$HOME/Library/Application Support/Code/User/settings.json"
+```
+
+> Preview what *would* change without touching anything:
+> `chezmoi diff` or `chezmoi apply --dry-run -v`.
+
+---
+
 ## Keeping dotfiles up to date
 
 chezmoi has a **source repo** (`~/.local/share/chezmoi`, this Git repo) and your
