@@ -1,0 +1,19 @@
+[profile hcodemo]
+region = ap-southeast-1
+output = json
+sso_session = hcodemo
+sso_account_id = 603047574445
+sso_role_name = PowerUser
+[sso-session hcodemo]
+sso_start_url = https://bain.awsapps.com/start/#
+sso_region = us-east-1
+sso_registration_scopes = sso:account:access
+[profile cvodemo]
+sso_session = cvodemo
+sso_account_id = 722437690754
+sso_role_name = DataScienceAdmin
+region = ap-southeast-2
+[sso-session cvodemo]
+sso_start_url = https://identitycenter.amazonaws.com/ssoins-7223705f3728939f
+sso_region = us-east-1
+sso_registration_scopes = sso:account:access

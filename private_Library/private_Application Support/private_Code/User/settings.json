@@ -1,0 +1,42 @@
+{
+    "window.autoDetectColorScheme": true,
+    "workbench.preferredLightColorTheme": "Dark Modern",
+    "files.autoSave": "afterDelay",
+    "claudeCode.preferredLocation": "panel",
+    "terminal.integrated.profiles.osx": {
+        "bash": {
+            "path": "bash",
+            "args": [
+                "-l"
+            ],
+            "icon": "terminal-bash"
+        },
+        "zsh": {
+            "path": "zsh",
+            "args": [
+                "-l"
+            ]
+        },
+        "fish": {
+            "path": "/opt/homebrew/bin/fish",
+            "args": [
+                "-l"
+            ]
+        },
+        "tmux": {
+            "path": "tmux",
+            "icon": "terminal-tmux"
+        },
+        "pwsh": {
+            "path": "pwsh",
+            "icon": "terminal-powershell"
+        }
+    },
+    "terminal.integrated.defaultProfile.osx": "fish",
+    "git.autofetch": true,
+    "mermaid.vscode.light": "mc",
+    "makefile.configureOnOpen": true,
+    "[jsonc]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    }
+}

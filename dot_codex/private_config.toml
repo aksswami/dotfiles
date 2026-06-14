@@ -1,0 +1,42 @@
+model = "gpt-5.5"
+model_reasoning_effort = "xhigh"
+[mcp_servers.github]
+url = "https://api.githubcopilot.com/mcp/"
+# Replace with your real PAT (least-privilege scopes). Do NOT commit this.
+bearer_token_env_var = "CODEX_MCP_GITHUB_PAT_TOKEN"
+
+[mcp_servers.github.tools.create_pull_request]
+approval_mode = "approve"
+
+[projects."/Users/79097/Developers/ce_dd - XF8Y/CE_DD_Workbench"]
+trust_level = "trusted"
+
+[projects."/Users/79097/Developers/ce_dd-XF8Y/CE_DD_Workbench"]
+trust_level = "trusted"
+
+[projects."/Users/79097/Developers/CommeEX-TJ1W/tj1w-wealth-management-ip"]
+trust_level = "trusted"
+
+[projects."/Users/79097/Developers/hsbc-life-hco/HCO_demo"]
+trust_level = "trusted"
+
+[projects."/Users/79097/Developers/AFKLM-V2XS/AFKL_Dynamic-Pricing"]
+trust_level = "trusted"
+
+[projects."/Users/79097/.ssh"]
+trust_level = "trusted"
+
+[projects."/Users/79097/Developers/AFKLM-V2XS/ancilry-casa"]
+trust_level = "trusted"
+
+[projects."/Users/79097/Developers/AFKLM-V2XS/ancilry-price-optimizer"]
+trust_level = "trusted"
+
+[plugins."github@openai-curated"]
+enabled = true
+
+[tui]
+status_line = ["model-with-reasoning", "project-name", "git-branch", "context-used"]
+
+[tui.model_availability_nux]
+"gpt-5.5" = 4

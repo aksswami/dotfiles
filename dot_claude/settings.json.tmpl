@@ -1,0 +1,43 @@
+{
+  "env": {
+    "ANTHROPIC_BASE_URL": "https://portkey.bain.dev/v1",
+    "ANTHROPIC_CUSTOM_HEADERS": "x-portkey-api-key: {{ onepasswordRead "op://Private/Portkey-Bain-Claude/password" }}"
+  },
+  "attribution": {
+    "commit": "",
+    "pr": ""
+  },
+  "hooks": {
+    "SessionEnd": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 ~/.claude/log-session-cost.py 2>/dev/null || true",
+            "statusMessage": "Logging session cost...",
+            "async": true
+          }
+        ]
+      }
+    ],
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "{{ .chezmoi.homeDir }}/.claude/skills/gstack/bin/gstack-session-update"
+          }
+        ]
+      }
+    ]
+  },
+  "statusLine": {
+    "type": "command",
+    "command": "bash {{ .chezmoi.homeDir }}/.claude/statusline-command.sh"
+  },
+  "enabledPlugins": {
+    "frontend-design@claude-plugins-official": true
+  },
+  "effortLevel": "high",
+  "skipAutoPermissionPrompt": true
+}
