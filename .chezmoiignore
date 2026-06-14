@@ -1,0 +1,12 @@
+# Machine-specific / regenerated state — never track
+.config/fish/fish_variables
+.config/fish/completions/**
+.DS_Store
+
+# Secrets that live outside the repo (keychain / re-auth on new machine)
+.config/gh/hosts.yml
+.config/gh/config.yml
+
+# Plaintext SSH key material — private keys come from 1Password (see *.tmpl)
+.ssh/known_hosts
+.ssh/known_hosts.old

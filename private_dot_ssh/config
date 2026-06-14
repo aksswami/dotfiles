@@ -1,0 +1,19 @@
+Host github.com github.com-bain
+    HostName github.com
+    User git
+    IdentityFile ~/.ssh/id_ed25519
+    IdentitiesOnly yes
+    AddKeysToAgent yes
+    UseKeychain yes
+
+Host github.com-afklm
+    HostName github.com
+    User git
+    IdentityFile ~/.ssh/id_ed25519_afklm
+    IdentitiesOnly yes
+    AddKeysToAgent yes
+    UseKeychain yes
+
+Host *
+    AddKeysToAgent yes
+    UseKeychain yes
